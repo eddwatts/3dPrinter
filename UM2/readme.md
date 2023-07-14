@@ -38,3 +38,6 @@ make menuconfig<br>
 make<br>
 cp out/klipper.uf2 ~/printer_data/config/THR42.uf2<br>
 flash using pc?<br>
+<br>
+<h1>Find can boot devices:</h1>
+~/CanBoot/scripts/flash_can.py -i can0 -q
