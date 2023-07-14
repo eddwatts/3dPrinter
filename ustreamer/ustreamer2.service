@@ -1,0 +1,17 @@
+[Unit]
+Description=uStreamer service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=pi
+#StandardOutput=socket
+#ProtectHome=yes
+Restart=on-abnormal
+RestartSec=20
+
+ExecStart=/home/pi/ustreamer/src/ustreamer.bin --process-name-prefix ustreamer- --log-level 0 --device=/dev/video2 --format=uyvy --encoder=m2m-image --workers=1 -b 1 --persistent --host=0.0.0.0 --port=8082 -r 1280x720 -f 24 -q 90
+
+[Install]
+WantedBy=multi-user.target
