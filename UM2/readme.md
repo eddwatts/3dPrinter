@@ -8,7 +8,7 @@ ls /dev/serial/by-id/*<br>
 sudo service klipper stop<br>
 make flash FLASH_DEVICE=/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0<br>
 #sudo service klipper start<br>
-<br><
+<br>
 <h1>SKR PICO:</h1>
 *  extra options enable<br>
 *  micro-controller architecture: Raspberry Pi RP2040<br>
