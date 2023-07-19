@@ -20,12 +20,24 @@ echo 'managed_services: klipper moonraker' | sudo tee --append ~/printer_data/co
 echo ' ' | sudo tee --append ~/printer_data/config/moonraker.conf
 echo '[file_manager]' | sudo tee --append ~/printer_data/config/moonraker.conf
 echo 'enable_object_processing: True' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo ' ' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '[timelapse]' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   Following basic configuration is default to most images and don't need' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   to be changed in most scenarios. Only uncomment and change it if your' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   Image differ from standart installations. In most common scenarios ' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   a User only need [timelapse] in their configuration.' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '#output_path: ~/timelapse/' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   Directory where the generated video will be saved' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '#frame_path: /tmp/timelapse/' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   Directory where the temporary frames are saved' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '#ffmpeg_binary_path: /usr/bin/ffmpeg' | sudo tee --append ~/printer_data/config/moonraker.conf
+echo '##   Directory where ffmpeg is installed' | sudo tee --append ~/printer_data/config/moonraker.conf
 
 echo '' | sudo tee --append ~/printer_data/moonraker.asvc
 echo 'ustreamer0' | sudo tee --append ~/printer_data/moonraker.asvc
 echo 'ustreamer1' | sudo tee --append ~/printer_data/moonraker.asvc
 echo 'ustreamer2' | sudo tee --append ~/printer_data/moonraker.asvc
-
+echo 'safeshutdown' | sudo tee --append ~/printer_data/moonraker.asvc
 
 sudo curl -o ~/safeshutdown.py https://raw.githubusercontent.com/eddwatts/3dPrinter/main/SafeShutdown/newsafeshutdown.py?id=$RANDOM -L
 sudo curl -o /etc/systemd/system/safeshutdown.service https://raw.githubusercontent.com/eddwatts/3dPrinter/main/SafeShutdown/safeshutdown.service?id=$RANDOM -L
@@ -43,7 +55,8 @@ sudo systemctl start ustreamer1.service
 sudo systemctl enable ustreamer2.service
 sudo systemctl start ustreamer2.service
 
-sudo systemctl start moonraker.service
+sudo systemctl stop moonraker.service
 sudo cp ~/klipper/scripts/klipper-mcu.service /etc/systemd/system/
 sudo systemctl enable klipper-mcu.service
 sudo systemctl start klipper-mcu.service
+sudo systemctl start moonraker.service
