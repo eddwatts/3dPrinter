@@ -11,7 +11,7 @@ User=pi
 Restart=on-abnormal
 RestartSec=20
 
-ExecStart=/home/pi/ustreamer/src/ustreamer.bin --process-name-prefix ustreamer- --log-level 0 --device=/dev/video1 --format=uyvy --encoder=m2m-image --workers=1 -b 1 --persistent --host=0.0.0.0 --port=8081 --allow-origin=\* -r 1280x720 -f 24 -q 90
+ExecStart=/home/pi/ustreamer/src/ustreamer.bin --process-name-prefix ustreamer- --log-level 0 --device=/dev/video1 --format=uyvy --encoder=m2m-image --workers=1 -b 1 --persistent --host=0.0.0.0 --port=8081 --allow-origin=\* -r 1920x1200 -f 24 -q 90
 
 [Install]
 WantedBy=multi-user.target
