@@ -1,6 +1,6 @@
 [Service]
-ExecStart=~/safeshutdown.py
-WorkingDirectory=~/
+ExecStart=/home/pi/safeshutdown.py
+WorkingDirectory=/home/pi/
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
