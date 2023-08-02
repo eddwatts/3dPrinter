@@ -1,3 +1,4 @@
+echo 'dtoverlay=pwm-2chan,pin=18,func=2,pin2=19,func2=2' | sudo tee --append /boot/config.txt
 echo 'dtoverlay=pi3-miniuart-bt' | sudo tee --append /boot/config.txt
 echo 'disable_splash=1' | sudo tee --append /boot/config.txt
 echo 'bcm2835-v4l2 max_video_width=2592 max_video_height=1944' | sudo tee --append /etc/modules
@@ -11,6 +12,7 @@ echo ' pre-up ip link set can0 txqueuelen 1024' | sudo tee --append /etc/network
 sudo raspi-config nonint do_boot_behaviour B2
 sudo raspi-config nonint do_legacy 0
 sudo raspi-config nonint do_i2c 0
+sudo raspi-config nonint do_spi 0
 sudo apt update
 sudo apt --fix-missing update
 sudo apt-get upgrade -y
