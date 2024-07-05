@@ -46,7 +46,8 @@ sleep 0.5
 # copy flash-file to pico
 echo copy flash-file to pico...
 #sudo find -type f -name '*.uf2' -exec cp -prv {} /media/$USER/RPI-RP2 \;
-cp ~/klipper/out/klipper.uf2 /media/$USER/RPI-RP2 \;
+cp ~/klipper/out/klipper.uf2 /media/$USER/RPI-RP2
+rm /media/$USER/RPI-RP2
 
 # check if flash has been successful
 count=0
