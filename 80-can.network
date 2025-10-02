@@ -3,4 +3,4 @@ Name=can*
 
 [CAN]
 BitRate=1000000
-TransmitQueueLength=128
+# TransmitQueueLength=128 - not working and not needed as its in the rules file
