@@ -36,4 +36,4 @@ git clone https://github.com/Arksine/katapult
 git clone https://github.com/mainsail-crew/moonraker-timelapse.git
 
 echo "--- Setup Complete! Now Run ./kiauh/kiauh.sh---"
-#./kiauh/kiauh.sh
+./kiauh/kiauh.sh
