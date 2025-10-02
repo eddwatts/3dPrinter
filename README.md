@@ -12,31 +12,28 @@ Download the DietPi image from: https://dietpi.com/#download<br>
 5. Set up your WiFi under Network Options: Adapters.
 6. Change your SSH Server to OpenSSH.
 7. Exit the setup when finished. (do not reboot)
-<br>
 
 ### Create a Non-Root User<br>
 run the commands:<br>
 adduser -m pi<br>
 usermod -aG sudo,tty,dialout,video,gpio pi<br>
 reboot<br>
-<br>
 
 ### Install klipper and set canbus up<br>
 Login to SSH using pi login<br>
 cd ~<br>
 curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh<br>
-<br>
 
 ### (Optional but recommended) Inspect the script's contents<br>
 less Klippercan.sh<br>
-<br>
 
 ### Make it executable and run it<br>
 sudo chmod +x Klippercan.sh<br>
 ./Klippercan.sh<br>
-<br>
+
 <br>
 
+[!WARNING]
 ## old:
 ###installing from scratch:<br>
 bash <(curl -s https://github.com/eddwatts/3dPrinter/raw/main/klipper-part1.sh?id=$RANDOM)<br>
