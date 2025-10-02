@@ -21,16 +21,16 @@ reboot<br>
 <br>
 ### Install klipper and set canbus up<br>
 Login to SSH using pi login<br>
-cd ~
-curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh
-
-### (Optional but recommended) Inspect the script's contents
-less Klippercan.sh
-
-### Make it executable and run it
-chmod +x Klippercan.sh
-./Klippercan.sh
-./kiauh/kiauh.sh
+cd ~<br>
+curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh<br>
+<br>
+### (Optional but recommended) Inspect the script's contents<br>
+less Klippercan.sh<br>
+<br>
+### Make it executable and run it<br>
+chmod +x Klippercan.sh<br>
+./Klippercan.sh<br>
+./kiauh/kiauh.sh<br>
 <br>
 <br>
 ## old:
