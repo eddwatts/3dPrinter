@@ -22,10 +22,9 @@ adduser -m pi<br>
 usermod -aG sudo,tty,dialout,video,gpio pi<br>
 reboot<br>
 <br>
-<b>insatll klipper and set canbus up</b><br>
+### Install klipper and set canbus up<br>
 Login to SSH using pi login<br>
 cd ~
-### Download the script
 curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh
 
 ### (Optional but recommended) Inspect the script's contents
