@@ -1,27 +1,39 @@
 # 3dPrinter<br>
 
-<h2>DietPi</h2>
-
-<b>Gettig things ready</b><br>
+<h2>DietPi Klipper Installation</h2>
+Download the DietPi image from: https://dietpi.com/#download
+<br>
+<b>Getting Things Ready</b><br>
 install image and find device on network<br>
 SSh in using root/dietpi<br>
 run dietpi-config<br>
 Navigate to Security options - Choose the option to Change password<br>
-chnage SSH Server - OpenSSH<br>
-install software: python3 and ffmpeg<br>
+change SSH Server - OpenSSH<br>
 setup wifi<br>
+quit the setup without reboot<br>
+dietpi-software
+install software: python3 and ffmpeg<br>
 quit the setup without reboot<br>
 <br>
 <b>Create a Non-Root User:</b><br>
 run the commands:<br>
 adduser -m pi<br>
-passwd pi<br>
 usermod -aG sudo,tty,dialout,video,gpio pi<br>
 reboot<br>
 <br>
 <b>insatll klipper and set canbus up</b><br>
 Login to SSH using pi login<br>
-sudo bash <(curl -s https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh)<br>
+cd ~
+# Download the script
+curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh
+
+# (Optional but recommended) Inspect the script's contents
+less Klippercan.sh
+
+# Make it executable and run it
+chmod +x Klippercan.sh
+./Klippercan.sh
+./kiauh/kiauh.sh
 <br>
 <br>
 
