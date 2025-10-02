@@ -12,9 +12,6 @@ Navigate to Security options - Choose the option to Change password<br>
 change SSH Server - OpenSSH<br>
 setup wifi<br>
 quit the setup without reboot<br>
-dietpi-software
-install software: python3 and ffmpeg<br>
-quit the setup without reboot<br>
 <br>
 ### Create a Non-Root User<br>
 run the commands:<br>
