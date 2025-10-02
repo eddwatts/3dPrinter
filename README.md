@@ -15,15 +15,15 @@ Download the DietPi image from: https://dietpi.com/#download<br>
 <br>
 ### Create a Non-Root User<br>
 run the commands:<br>
-```
+'''
 adduser -m pi<br>
 usermod -aG sudo,tty,dialout,video,gpio pi<br>
 reboot<br>
-```
+'''
 <br>
 ### Install klipper and set canbus up<br>
 Login to SSH using pi login<br>
-```
+'''
 cd ~<br>
 curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klippercan.sh<br>
 <br>
@@ -33,7 +33,7 @@ less Klippercan.sh<br>
 ### Make it executable and run it<br>
 sudo chmod +x Klippercan.sh<br>
 ./Klippercan.sh<br>
-```
+'''
 <br>
 <br>
 ## old:
