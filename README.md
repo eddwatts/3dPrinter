@@ -4,20 +4,21 @@
 ### DietPi Klipper Installation<br>
 Download the DietPi image from: https://dietpi.com/#download<br>
 <br>
-### Getting Things Ready<br>
-1. Install the image
-2. find the device on your network.
-3. SSH in using root / dietpi.
-4. run dietpi-config menu if not loaded
-5. Set up your WiFi under Network Options: Adapters.
-6. Change your SSH Server to OpenSSH.
-7. Exit the setup when finished. (do not reboot)
-
-### Create a Non-Root User<br>
-run the commands:<br>
-adduser -m pi<br>
-usermod -aG sudo,tty,dialout,video,gpio pi<br>
-reboot<br>
+> [!IMPORTANT]
+> ### Getting Things Ready<br>
+> 1. Install the image
+> 2. find the device on your network.
+> 3. SSH in using root / dietpi.
+> 4. run dietpi-config menu if not loaded
+> 5. Set up your WiFi under Network Options: Adapters.
+> 6. Change your SSH Server to OpenSSH.
+> 7. Exit the setup when finished. (do not reboot)
+> 
+> ### Create a Non-Root User<br>
+> run the commands:<br>
+> adduser -m pi<br>
+> usermod -aG sudo,tty,dialout,video,gpio pi<br>
+> reboot<br>
 
 ### Install klipper and set canbus up<br>
 Login to SSH using pi login<br>
