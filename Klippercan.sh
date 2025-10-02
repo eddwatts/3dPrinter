@@ -3,7 +3,20 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-echo "--- Starting Klipper CAN Bus Setup ---"
+# --- Root Check ---
+# Ensure the script is run with root privileges (i.e., using 'sudo')
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root. Please use 'sudo ./Klippercan.sh'"
+   exit 1
+fi
+
+echo "--- Starting Klipper Prerequisite Setup ---"
+
+# --- Install Dependencies ---
+echo "Updating package list and installing core dependencies..."
+apt-get update
+apt-get install -y git curl can-utils python3 ffmpeg python3-serial
+
 
 # --- Network and udev Rule Configuration ---
 echo "Downloading and setting up network and udev rules..."
@@ -28,9 +41,12 @@ echo "Updating package list and installing git and can-utils..."
 sudo apt-get update && sudo apt-get install -y git can-utils python3 ffmpeg python3-serial
 
 
-# --- Clone Klipper Software Repositories ---
-echo "Cloning KIAUH, Katapult, and Moonraker Timelapse..."
-cd ~
+# --- Clone KIAUH ---
+# We clone KIAUH into the home directory of the user who ran the sudo command
+# (e.g., /home/pi), not into the root home directory.
+SUDO_USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+echo "Cloning the Klipper Installation and Update Helper (KIAUH) into $SUDO_USER_HOME..."
+cd "$SUDO_USER_HOME"
 git clone https://github.com/dw-0/kiauh.git
 git clone https://github.com/Arksine/katapult
 git clone https://github.com/mainsail-crew/moonraker-timelapse.git
