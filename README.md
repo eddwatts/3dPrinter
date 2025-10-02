@@ -29,8 +29,8 @@ curl -s -o Klippercan.sh https://github.com/eddwatts/3dPrinter/raw/main/Klipperc
 less Klippercan.sh<br>
 
 ### Make it executable and run it<br>
-sudo chmod +x Klippercan.sh<br>
-./Klippercan.sh<br>
+chmod +x Klippercan.sh<br>
+sudo ./Klippercan.sh<br>
 
 <br>
 
