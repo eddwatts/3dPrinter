@@ -25,8 +25,7 @@ sudo udevadm trigger
 
 # --- Install Required Packages ---
 echo "Updating package list and installing git and can-utils..."
-sudo apt-get update
-sudo apt-get install -y git can-utils pyserial
+sudo apt-get update && sudo apt-get install -y git can-utils python3 ffmpeg python3-serial
 
 
 # --- Clone Klipper Software Repositories ---
