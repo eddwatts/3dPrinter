@@ -12,21 +12,21 @@ fi
 
 echo "--- Starting Klipper Prerequisite Setup ---"
 
-# --- Install Dependencies ---
-echo "Updating package list and installing core dependencies..."
-apt-get update
-apt-get install -y git curl can-utils python3 ffmpeg python3-serial
-
-
 # --- Network and udev Rule Configuration ---
-echo "Downloading and setting up network and udev rules..."
-curl -o "/etc/systemd/network/80-can0.network" https://github.com/eddwatts/3dPrinter/raw/refs/heads/main/80-can.network -L
-curl -o "/etc/udev/rules.d/71-can-txqueuelen.rules" https://github.com/eddwatts/3dPrinter/raw/refs/heads/main/71-can-txqueuelen.rules -L
+echo "Setting up network and udev rules..."
+echo '[Match]' | sudo tee --append /etc/systemd/network/80-can0.network
+echo 'Name=can*' | sudo tee --append /etc/systemd/network/80-can0.network
+echo ' ' | sudo tee --append /etc/systemd/network/80-can0.network
+echo '[CAN]' | sudo tee --append /etc/systemd/network/80-can0.network
+echo 'BitRate=1000000' | sudo tee --append /etc/systemd/network/80-can0.network
+echo '# TransmitQueueLength=128 - not working and not needed as its in the rules file' | sudo tee --append /etc/systemd/network/80-can0.network
+echo 'SUBSYSTEM=="net", ACTION=="change|add", KERNEL=="can*" ATTR{tx_queue_len}="128"' | sudo tee --append /etc/udev/rules.d/71-can-txqueuelen.rules
 
 # These lines were commented out in the original script.
+# sudo curl -o "/etc/systemd/network/80-can0.network" https://github.com/eddwatts/3dPrinter/raw/refs/heads/main/80-can.network -L
+# sudo curl -o "/etc/udev/rules.d/71-can-txqueuelen.rules" https://github.com/eddwatts/3dPrinter/raw/refs/heads/main/71-can-txqueuelen.rules -L
 # sudo curl -o "/etc/systemd/network/80-can.network" https://github.com/eddwatts/3dPrinter/raw/refs/heads/main/80-can.network -L
 # sudo curl -o "/etc/udev/rules.d/99-persistent-network.rules" https://github.com/eddwatts/3dPrinter/raw/refs/heads/main/71-can-txqueuelen.rules -L
-
 
 # --- Apply Network Changes ---
 echo "Applying network and udev changes..."
@@ -35,10 +35,9 @@ systemctl restart systemd-networkd
 udevadm control --reload-rules
 udevadm trigger
 
-
 # --- Install Required Packages ---
 echo "Updating package list and installing git and can-utils..."
-sudo apt-get update && sudo apt-get install -y git can-utils python3 ffmpeg python3-serial
+sudo apt-get update && sudo apt-get install -y git curl can-utils python3 ffmpeg python3-serial
 
 
 # --- Clone KIAUH ---
